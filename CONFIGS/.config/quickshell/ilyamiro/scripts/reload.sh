@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# ^ Specifies that this script should be run using the `bash` interpreter found in the user's PATH environment variable via `env`. This is a portable shebang that locates bash dynamically rather than relying on a hardcoded absolute path.
+
+qs -p ~/.config/hypr/scripts/quickshell/Main.qml ipc call main forceReload
+# ^ Uses the `qs` command (a shorthand or alias for the QuickShell runtime) to communicate with a running QuickShell instance. The `-p` flag specifies the path to the Main.qml configuration file, identifying which QuickShell instance to target. The `ipc call` subcommand sends an inter-process communication message to that running instance. `main` is the target object or channel within the QML application, and `forceReload` is the method or command being invoked on that object. This line forces the main QuickShell interface (which manages popups, overlays, and widgets) to completely reload its QML components, reapplying any configuration changes, theme updates, or script modifications without needing to restart the process. The `~` expands to the user's home directory.
+
+qs -p ~/.config/hypr/scripts/quickshell/TopBar.qml ipc call topbar forceReload
+# ^ Sends a similar IPC command to the TopBar QuickShell instance. It targets the running TopBar process using the path to its QML file, then calls the `forceReload` method on the `topbar` object. This forces the status bar/panel to reload its QML definitions, which is typically done after changes to styling, color schemes (like matugen updates), widget configurations, or layout adjustments. Reloading in-place preserves the bar's continuous operation while refreshing its appearance and behavior to reflect the latest configuration state.

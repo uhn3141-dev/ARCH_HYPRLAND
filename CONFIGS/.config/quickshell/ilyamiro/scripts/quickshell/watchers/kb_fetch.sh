@@ -1,0 +1,9 @@
+# #!/usr/bin/env bash
+# layout=$(LC_ALL=C hyprctl devices -j 2>/dev/null | jq -r '(.keyboards[] | select(.main == true) | .active_keymap) // .keyboards[0].active_keymap // empty' | head -n1)
+# [[ -z "$layout" || "$layout" == "null" ]] && layout="US"
+# echo "${layout:0:2}" | tr '[:lower:]' '[:upper:]'
+
+#!/usr/bin/env bash                                                              # Shebang line that tells the system to execute this script using the bash interpreter found in the user's PATH environment variable (more portable than hardcoding /bin/bash)
+layout=$(LC_ALL=C hyprctl devices -j 2>/dev/null | jq -r '(.keyboards[] | select(.main == true) | .active_keymap) // .keyboards[0].active_keymap // empty' | head -n1)  # Sets C locale for consistent parsing, runs hyprctl to list all input devices in JSON format (-j), suppresses errors, pipes the JSON to jq which: first tries to find a keyboard with main==true and extract its active_keymap, if that fails (// operator) tries the first keyboard's active_keymap, if that also fails returns empty; the -r flag outputs raw strings without quotes, head -n1 takes only the first result, and the entire command substitution stores the result in the layout variable
+[[ -z "$layout" || "$layout" == "null" ]] && layout="US"                       # Double-bracket conditional test: checks if layout is empty (zero-length string) OR if layout equals the literal string "null" (jq returns "null" when no value exists); if either condition is true, sets layout to "US" as a safe fallback default keyboard layout
+echo "${layout:0:2}" | tr '[:lower:]' '[:upper:]'                             # Uses bash parameter expansion to extract only the first 2 characters of the layout string (e.g., takes "us" from "us(intl)" or "English (US)" from longer descriptions), then pipes through tr which translates all lowercase characters to uppercase, outputting the final 2-letter uppercase layout code (e.g., "US", "GB", "DE")

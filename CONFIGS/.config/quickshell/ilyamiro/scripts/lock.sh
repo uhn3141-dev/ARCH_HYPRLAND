@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# ^ Specifies that this script should be run using the `bash` interpreter found in the user's PATH environment variable. The `env` command locates bash dynamically, making the script portable across systems where bash might be installed at different absolute paths.
+
+quickshell -p ~/.config/hypr/scripts/quickshell/Lock.qml
+# ^ Launches the QuickShell application with the Lock screen QML file as the interface to display. The `quickshell` command starts the QuickShell runtime (a QML-based shell toolkit for Wayland). The `-p` flag likely stands for "path" or "present" and specifies which QML file to load as the main interface. The `~` expands to the current user's home directory, making the full path `$HOME/.config/hypr/scripts/quickshell/Lock.qml`. This particular QML file is designed to show a lock screen overlay, typically with a clock, user avatar, password input, or other idle-screen elements. The command runs in the foreground (no `&` at the end), meaning the script will block until the QuickShell lock screen process terminates (e.g., when the user unlocks the session).

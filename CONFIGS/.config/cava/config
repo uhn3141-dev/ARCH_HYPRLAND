@@ -1,0 +1,223 @@
+# ============================================================
+#  CAVA - Console-based Audio Visualizer for Linux
+# ============================================================
+# Location: ~/.config/cava/config
+# 
+# This config works with both Bluetooth (AirPods) and wired
+# headphones using the PulseAudio backend.
+# ============================================================
+
+
+# ----------------------------------------
+# GENERAL SETTINGS
+# ----------------------------------------
+[general]
+
+# Auto reload config if file changes (1 = on, 0 = off)
+live-config = 1
+
+# Framerate in frames per second (higher = smoother, more CPU)
+# Accepts only non-negative values
+framerate = 60
+
+# Auto-sensitivity: attempts to decrease sensitivity if bars peak
+# 1 = on, 0 = off
+autosens = 1
+
+# Overshoot percentage before autosens kicks in
+overshoot = 20
+
+# Manual sensitivity in % (if autosens is off, this is the fixed value)
+# 200 means double height. Accepts only non-negative values.
+sensitivity = 100
+
+# Number of bars (0-512). 0 = auto (fill console width)
+bars = 0
+
+# Bar width and spacing in characters
+bar_width = 2
+bar_spacing = 1
+
+# Center align bars in terminal if there's extra space (1 = on, 0 = off)
+center_align = 1
+
+# Max bar height as percentage of terminal height
+max_height = 100
+
+# Frequency range for the visualizer (in Hz)
+lower_cutoff_freq = 50
+higher_cutoff_freq = 10000
+
+# Sleep timer: seconds with no input before cava goes to sleep
+# 0 = disable sleep
+sleep_timer = 0
+
+
+# ----------------------------------------
+# INPUT SETTINGS
+# ----------------------------------------
+[input]
+
+# Audio capture method: 'pulse' works best for Bluetooth on Arch
+# Other methods: 'pipewire', 'alsa', 'fifo', 'portaudio', 'jack'
+method = pulse
+
+# Audio source:
+# - 'auto' = monitor source of current default sink (works for both BT and wired)
+# - Or specific source like 'bluez_output.XX_XX_XX.monitor'
+source = auto
+
+# Sample rate and bits (only used by fifo/pipewire/sndio/oss)
+# sample_rate = 44100
+# sample_bits = 16
+# channels = 2
+
+# PipeWire-specific options (ignored when using pulse method)
+# active = 1
+# remix = 1
+# virtual = 1
+
+
+# ----------------------------------------
+# OUTPUT SETTINGS
+# ----------------------------------------
+[output]
+
+# Output method:
+# - 'noncurses' = recommended (less tearing, lower CPU)
+# - 'ncurses'   = alternative
+# - 'raw'       = data stream for other apps
+# - 'sdl'       = graphical window
+method = noncurses
+
+# Bar orientation:
+# - 'bottom'  = bars grow upward from bottom
+# - 'top'     = bars grow downward from top
+# - 'left'    = bars grow right from left side
+# - 'right'   = bars grow left from right side
+# - 'horizontal' = bars go up/down from center
+orientation = bottom
+
+# Channel mode:
+# - 'stereo' = left channel on left side, right on right (low freqs centered)
+# - 'mono'   = combine both channels
+channels = stereo
+
+# When in mono mode: use 'left', 'right', or 'average'
+mono_option = average
+
+# Reverse frequency scale (1 = high freqs on left, low on right)
+reverse = 0
+
+# Horizontal stereo mode (only when orientation = 'horizontal')
+# 1 = left channel on top, right on bottom
+horizontal_stereo = 0
+left_bottom = 1
+
+# Show frequency labels on x-axis ('frequency' or 'none')
+xaxis = none
+
+# Synchronized sync: reduces flickering in some terminal emulators
+# Set to 1 if you see tearing in Alacritty/Kitty
+synchronized_sync = 0
+
+# Disable terminal screen saver/blanking in TTY (not on FreeBSD)
+disable_blanking = 0
+
+# Show flat bar heads when idle (1 = on, 0 = off)
+show_idle_bar_heads = 1
+
+# Show waveform instead of frequency spectrum (1 = on, 0 = off)
+waveform = 0
+
+
+# ----------------------------------------
+# COLOR SETTINGS
+# ----------------------------------------
+[color]
+
+# Colors can be: black, blue, cyan, green, magenta, red, white, yellow
+# Or hex codes like '#ff0000' (must be in quotes)
+background = default
+foreground = default
+
+# Gradient mode: vertical color transition from bottom to top
+# 1 = on, 0 = off (requires hex colors)
+gradient = 1
+gradient_color_1 = '#0DF205'
+gradient_color_2 = '#D7F205'
+gradient_color_3 = '#F29F05'
+gradient_color_4 = '#F27405'
+gradient_color_5 = '#F21905'
+
+# Horizontal gradient (only on noncurses output)
+horizontal_gradient = 0
+# horizontal_gradient_color_1 = '#c45161'
+# horizontal_gradient_color_2 = '#e094a0'
+# horizontal_gradient_color_3 = '#f2b6c0'
+# horizontal_gradient_color_4 = '#f2dde1'
+# horizontal_gradient_color_5 = '#cbc7d8'
+# horizontal_gradient_color_6 = '#8db7d2'
+# horizontal_gradient_color_7 = '#5e62a9'
+# horizontal_gradient_color_8 = '#434279'
+
+# When both gradients are enabled, blend direction:
+# 'up', 'down', 'left', or 'right'
+blend_direction = 'up'
+
+# Use external theme file instead of inline colors
+# theme = 'none'
+
+
+# ----------------------------------------
+# SMOOTHING SETTINGS
+# ----------------------------------------
+[smoothing]
+
+# Noise reduction (0-100)
+# Higher = smoother/slower, Lower = faster/noisier
+# Default: 77
+noise_reduction = 77
+
+# Monstercat-style smoothing with waves (0 = disabled)
+monstercat = 1
+waves = 0
+gravity = 200
+
+
+# ----------------------------------------
+# EQUALIZER (EQ)
+# ----------------------------------------
+[eq]
+
+# Custom frequency band adjustments
+# More keys = more precision
+# 1 = bass, 3 = midtone, 5 = treble
+# Values > 1 boost, < 1 cut
+#
+# Example - Bass boost:
+# 1 = 1.5
+# 2 = 1.2
+# 3 = 1.0
+# 4 = 0.8
+# 5 = 0.6
+#
+# Uncomment and adjust as needed:
+# 1 = 1
+# 2 = 1
+# 3 = 1
+# 4 = 1
+# 5 = 1
+
+
+# ============================================================
+#  NOTES:
+# ============================================================
+# - For Bluetooth AirPods on Arch, 'method = pulse' works best
+# - If cava still triggers BT profile switch to HSP/HFP, add:
+#   ~/.config/wireplumber/bluetooth.lua.d/50-bluez-config.lua
+#   with: bluez_monitor.properties = {
+#           ["bluetooth.autoswitch-to-headset-profile"] = false,
+#         }
+# - Then restart: systemctl --user restart wireplumber
+# ============================================================

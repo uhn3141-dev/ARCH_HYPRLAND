@@ -1,0 +1,19 @@
+/* Floating URL Bar - Show results only when typing */
+#urlbar[open] {
+background-image: var(--zen-main-browser-background-toolbar) !important;
+border-radius: 20px !important;
+left: 50%;
+position: absolute !important;
+}
+
+#urlbar[open] #urlbar-background {
+margin: 4px !important;
+}
+
+#urlbar .urlbarView-body-inner {
+display: none !important;
+}
+
+#urlbar[usertyping] .urlbarView-body-inner {
+display: block !important;
+}
