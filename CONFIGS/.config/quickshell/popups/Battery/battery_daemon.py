@@ -9,7 +9,8 @@ import socket
 from datetime import date
 from threading import Thread
 
-STATS_FILE = os.path.expanduser("/home/uhn406/.config/quickshell/popups/Battery/qs_battery_stats.json")
+# STATS_FILE = os.path.expanduser("~/.config/quickshell/popups/Battery/qs_battery_stats.json")
+STATS_FILE = os.path.join(os.path.dirname(__file__), "qs_battery_stats.json")
 HYPR_SIG = os.environ.get("HYPRLAND_INSTANCE_SIGNATURE", "")
 XDG_RUNTIME = os.environ.get("XDG_RUNTIME_DIR", "/tmp")
 

@@ -490,17 +490,17 @@
       }
     },
     "2026-06-07": {
-      "uptime": 12052,
+      "uptime": 27986,
       "apps": {
         "Grub Customizer": 10,
         "Ventoy \u2014 Dolphin": 20,
         "theme.txt  \u2014 Kate": 50,
         "Dolphin": 10,
-        "kitty": 950,
+        "kitty": 1430,
         "clockwork.gif": 70,
         "sekiro_grub_theme \u2014 Dolphin": 10,
         "winboat": 30,
-        "Zen Browser": 3880,
+        "Zen Browser": 17614,
         "Virtual Machine Manager": 170,
         "Add Connection": 10,
         "New VM": 211,
@@ -524,7 +524,37 @@
         "Locate directory volume": 20,
         "Choose target directory": 10,
         "Add New Virtual Hardware": 10,
-        "Cancel All Downloads?": 10
+        "Cancel All Downloads?": 10,
+        "quickshell \u2014 Dolphin": 120,
+        "VSCODE \u2014 Dolphin": 30,
+        "Visual Studio Code": 680,
+        "Home \u2014 Dolphin": 100,
+        "Create New Folder \u2014 Dolphin": 60,
+        "GitHub \u2014 Dolphin": 210,
+        "Properties for Code \u2014 Dolphin": 10,
+        "Choose Application \u2014 Dolphin": 10,
+        "theme  \u2014 Kate": 10,
+        "config.toml  \u2014 Kate": 20,
+        "GitKraken Desktop": 350,
+        "GitKraken": 30
+      }
+    },
+    "2026-06-08": {
+      "uptime": 8512,
+      "apps": {
+        "Zen Browser": 4741,
+        ".config \u2014 Dolphin": 400,
+        "kitty": 770,
+        "winboat": 20,
+        "(Unsaved) - Blender 5.1.2": 30,
+        "Visual Studio Code": 1611,
+        "GitHub \u2014 Dolphin": 10,
+        "Choose Application \u2014 Dolphin": 10,
+        "Dolphin": 10,
+        "battery_daemon.py  \u2014 Kate": 70,
+        "PowerPanel.qml  \u2014 Kate": 20,
+        "Home \u2014 Dolphin": 170,
+        ".zsh_history  \u2014 Kate": 10
       }
     }
   }
