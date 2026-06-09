@@ -6,28 +6,17 @@ Item {
 
     // Path to the JSON icon file (set this from the outside)
     property string iconPath: ""
-
     // Holds the loaded icons: key = lowercase app name, value = icon string
-    property var iconMap: ({})
-
-    // Reload when the path changes
-    onIconPathChanged: {
-        if (iconPath) loadIcons()
-    }
-
-    // Also load once when the component is ready (in case iconPath is already set)
-    Component.onCompleted: {
-        if (iconPath) loadIcons()
-    }
+    property var iconMap: ({
+    })
 
     function loadIcons() {
         // Resolve relative paths to absolute
-        let resolvedPath = iconPath
+        let resolvedPath = iconPath;
         if (iconPath.startsWith("./") || iconPath.startsWith("../")) {
-            let base = Qt.resolvedUrl(".").replace("file://", "")
-            resolvedPath = base + "/" + iconPath
+            let base = Qt.resolvedUrl(".").replace("file://", "");
+            resolvedPath = base + "/" + iconPath;
         }
-
         // Read the file with a Process
         let cmd = `import Quickshell.Io; Process {
             command: ["cat", "${resolvedPath}"]
@@ -60,21 +49,36 @@ Item {
                     if (text.trim()) console.log("AppIcons error:", text.trim())
                 }
             }
-        }`
-        let process = Qt.createQmlObject(cmd, root)
-        process.running = true
+        }`;
+        let process = Qt.createQmlObject(cmd, root);
+        process.running = true;
     }
 
     function getIcon(appName) {
-        let lower = appName.toLowerCase()
+        let lower = appName.toLowerCase();
         // direct match
-        if (iconMap[lower]) return iconMap[lower]
+        if (iconMap[lower])
+            return iconMap[lower];
+
         // substring match
         for (let key in iconMap) {
-            if (lower.indexOf(key) !== -1 || key.indexOf(lower) !== -1) {
-                return iconMap[key]
-            }
+            if (lower.indexOf(key) !== -1 || key.indexOf(lower) !== -1)
+                return iconMap[key];
+
         }
-        return "󰎆"   // fallback icon
+        return "󰎆"; // fallback icon
+    }
+
+    // Reload when the path changes
+    onIconPathChanged: {
+        if (iconPath)
+            loadIcons();
+
+    }
+    // Also load once when the component is ready (in case iconPath is already set)
+    Component.onCompleted: {
+        if (iconPath)
+            loadIcons();
+
     }
 }

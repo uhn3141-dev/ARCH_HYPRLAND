@@ -540,21 +540,40 @@
       }
     },
     "2026-06-08": {
-      "uptime": 8512,
+      "uptime": 15779,
       "apps": {
-        "Zen Browser": 4741,
-        ".config \u2014 Dolphin": 400,
-        "kitty": 770,
+        "Zen Browser": 6533,
+        ".config \u2014 Dolphin": 541,
+        "kitty": 2841,
         "winboat": 20,
         "(Unsaved) - Blender 5.1.2": 30,
-        "Visual Studio Code": 1611,
-        "GitHub \u2014 Dolphin": 10,
+        "Visual Studio Code": 3714,
+        "GitHub \u2014 Dolphin": 70,
         "Choose Application \u2014 Dolphin": 10,
         "Dolphin": 10,
         "battery_daemon.py  \u2014 Kate": 70,
         "PowerPanel.qml  \u2014 Kate": 20,
-        "Home \u2014 Dolphin": 170,
-        ".zsh_history  \u2014 Kate": 10
+        "Home \u2014 Dolphin": 180,
+        ".zsh_history  \u2014 Kate": 10,
+        "Add Folder to Workspace": 20,
+        "Open Folder": 10,
+        "Spotify": 890,
+        "GitKraken": 20,
+        "GitKraken Desktop": 60
+      }
+    },
+    "2026-06-09": {
+      "uptime": 27458,
+      "apps": {
+        "Zen Browser": 18180,
+        "kitty": 3283,
+        "Visual Studio Code": 5724,
+        ".config \u2014 Dolphin": 70,
+        "init.lua  \u2014 Kate": 10,
+        "init.vim  \u2014 Kate": 51,
+        "nvim \u2014 Dolphin": 20,
+        "~ : nvim \u2014 Konsole": 10,
+        "Open File": 10
       }
     }
   }

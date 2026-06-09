@@ -1,1 +1,1 @@
-stow CONFIGS
+stow -t ~ --adopt CONFIGS

@@ -13,12 +13,12 @@ write_ipc() {
 case "$1" in
     --toggle)
         write_ipc "toggle:$2"
-        ;;
+    ;;
     --close-all|--kill-all)
         write_ipc "close:all"
-        ;;
+    ;;
     *)
         echo "Usage: $0 --toggle <id> | --close-all"
         exit 1
-        ;;
+    ;;
 esac

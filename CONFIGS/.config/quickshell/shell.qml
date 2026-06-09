@@ -1,33 +1,42 @@
-import QtQuick 2.15
-import QtQuick.Layouts 2.15
-import QtQuick.Controls 2.15
+import QtQuick 6.0
+import QtQuick.Controls 6.0
+import QtQuick.Layouts 6.0
 import Quickshell
+import Quickshell.Hyprland
 import Quickshell.Io
 import Quickshell.Wayland
-import Quickshell.Hyprland
 
 PanelWindow {
     id: root
 
-    AppIcons { 
-        id: appIcons
-        iconPath: _HOMEDIR + "/.config/quickshell/app_icons.json"
-    }
+    property bool isStartupReady: false
+    property bool showLayout: false
+    readonly property string _HOMEDIR: Quickshell.env("HOME")
 
     anchors.top: true
     implicitHeight: config.panelHeight
     implicitWidth: config.monitorWidth - 2
     color: '#00ffffff'
 
-    Theme { id: theme }
-    Config { id: config }
+    AppIcons {
+        id: appIcons
 
-    property bool isStartupReady: false
+        iconPath: _HOMEDIR + "/.config/quickshell/app_icons.json"
+    }
+
+    Theme {
+        id: theme
+    }
+
+    Config {
+        id: config
+    }
+
     Timer {
         interval: 100
         running: true
         onTriggered: {
-            root.isStartupReady = true
+            root.isStartupReady = true;
         }
     }
 
@@ -36,22 +45,30 @@ PanelWindow {
         interval: 300000
         running: true
         onTriggered: {
-            Quickshell.reload("~/.config/quickshell/shell.qml")
+            Quickshell.reload("~/.config/quickshell/shell.qml");
         }
     }
-    
-    property bool showLayout: false
-    Timer { 
+
+    Timer {
         running: root.isStartupReady
         interval: config.startupDelay
         onTriggered: root.showLayout = true
     }
 
-    readonly property string _HOMEDIR: Quickshell.env("HOME")
+    PopupManager {
+        id: popupManager
+    }
 
-    PopupManager { id: popupManager }
+    LeftPanel {
+        id: leftPanel
+    }
 
-    LeftPanel { id: leftPanel }
-    MiddlePanel { id: middlePanel }
-    RightPanel { id: rightPanel }
+    MiddlePanel {
+        id: middlePanel
+    }
+
+    RightPanel {
+        id: rightPanel
+    }
+
 }

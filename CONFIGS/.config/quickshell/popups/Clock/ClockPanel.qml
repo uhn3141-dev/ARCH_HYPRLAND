@@ -1,9 +1,9 @@
 import QtQuick
-import QtQuick.Layouts
 import QtQuick.Controls
+import QtQuick.Layouts
 import Quickshell
-import Quickshell.Io
 import Quickshell.Hyprland
+import Quickshell.Io
 
 PopupWindow {
     id: networkPopup
@@ -11,10 +11,8 @@ PopupWindow {
     anchor.window: root
     anchor.rect.x: root.width / 2 - width / 2
     anchor.rect.y: 31
-
     implicitWidth: 300
     implicitHeight: 400
-
     color: 'transparent'
     visible: false
 }

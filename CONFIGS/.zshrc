@@ -1,5 +1,5 @@
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$HOME/.cargo/bin:$PATH
-
+export QML_IMPORT_PATH="/usr/lib/qt6/qml:$(qmake6 -query QT_INSTALL_QML 2>/dev/null)"
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
